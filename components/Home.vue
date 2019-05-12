@@ -36,7 +36,7 @@
     </div>
 
     <div class="pokeLists">
-      <cards v-for="pokemon in pokemonList" :key="pokemon.id" :pokemon="pokemon"/>
+      <PokeCard v-for="pokemon in pokemonList" :key="pokemon.id" :pokemon="pokemon"/>
     </div>
 
   </div>
@@ -44,7 +44,7 @@
 
 <script>
 import axios from 'axios';
-import cards from '@/components/cards';
+import PokeCard from '~/components/PokeCard.vue';
 
 export default {
   name: 'HelloWorld',
@@ -74,7 +74,7 @@ export default {
     async sendID(){
       this.isPokemonSpec = true;
       (this.mandoID == '')
-        ? alert('Favor de ingresar un ID')
+        ? this.$noty.error('Favor de ingresar un ID')
         : (this.mandoID <= 802)
           ? this.pokemon2 = this.getPokemonDataFromResponse( await axios.get('http://localhost:6001/pokemonEspec', { params:{ id : this.mandoID } }))
           : alert(`El pokemon con id ${this.mandoID} no está registrado en la Pokedex`);
@@ -82,7 +82,7 @@ export default {
 
     async pokeInterval(){
       (this.limit == '')
-        ? alert('Favor de ingresar cuantos pokemones quieres ver')
+        ? this.$noty.error('Favor de ingresar cuantos pokemones quieres ver')
         : this.back()
     },
     async back(){
@@ -91,7 +91,7 @@ export default {
 
   },
   components:{
-    cards
+    PokeCard
   }
 }
 </script>
