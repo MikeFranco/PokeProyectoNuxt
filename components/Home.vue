@@ -13,7 +13,7 @@
 
     <div class="pokealeatorio">
 
-      <div class="botonshowpoke"> <button style="color: black" @click="pokeRandom()">Show Pokemon Random</button>  </div>
+      <div class="botonshowpoke"> <button style="color: black" @click="pokemonRandom()">Show Pokemon Random</button>  </div>
 
       <p v-if="isPokemonShown">
         <br>Pokemon con ID aleatorio <br>
@@ -60,15 +60,16 @@ export default {
     }
   },
   methods: {
-
-    async pokeRandom(){
-      this.isPokemonShown = true;
-       this.pokemon = this.getPokemonDataFromResponse (await axios.post('http://localhost:6001/verPokemones') );
+    pokemonRandom(){
+      this.$axios.post('http://localhost:6001/verPokemones')
+        .then(response =>{
+          this.isPokemonShown = true;
+          console.log(response)
+          this.pokemon = response.data;
+        })
+        .catch(err => this.$noty.error(err))
     },
-
     getPokemonDataFromResponse(response){
-      // eslint-disable-next-line
-      console.log(response);
       return response.data;
     },
     async sendID(){
