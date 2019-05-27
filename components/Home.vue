@@ -20,7 +20,7 @@
     </div>
 
     <div class="pokeID">
-      <PokeCard v-if="isPokemonSpec" :pokemon="pokemonRandomInfo" />
+      <PokeCard v-if="isPokemonSpec" :pokemon="pokemonSpecificInfo" />
     </div>
 
   </div>
@@ -37,7 +37,7 @@ export default {
       isPokemonRandomShown: false,
       isPokemonSpec: false,
       pokemon: {},
-      pokemonRandomInfo: {}
+      pokemonSpecificInfo: {}
     }
   },
   methods: {
@@ -60,7 +60,7 @@ export default {
     specificPokemon(){
       this.$axios.get('http://localhost:6001/pokemonEspec', { params:{ id : this.specificId } })
         .then(response =>{
-          this.pokemonRandomInfo = response.data;
+          this.pokemonSpecificInfo = response.data;
           this.isPokemonSpec = true;
         })
         .catch(err => this.$noty.error(err));
