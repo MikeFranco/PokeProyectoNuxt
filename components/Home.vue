@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <img src="../assets/images/background.png">
 
     <div class="barraBusqueda">
       <h3>Ingrese el ID del pokemon:</h3>
@@ -15,8 +16,8 @@
     <div class="pokeID">
       <PokeCard v-if="isPokemonSpec" :pokemon="pokemonSpecificInfo" />
     </div>
+    </div>
 
-  </div>
 </template>
 
 <script>
@@ -100,10 +101,5 @@ input{
   position: absolute;
   top: 150px;
   left: 50%;
-}
-pokeLists{
-  position: center;
-  margin-top: 200px;
-
 }
 </style>

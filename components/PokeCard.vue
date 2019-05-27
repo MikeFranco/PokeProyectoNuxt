@@ -1,10 +1,4 @@
 <template>
-  <!-- <p>
-    <img :src="pokemon.image"/>
-    <br>Un {{pokemon.name}} ha aparecido<br>
-    El id del pokemon es: {{pokemon.id}}<br>
-    ¡Cuidado!, {{pokemon.name}} ha usado: {{pokemon.move}}<br>
-  </p> -->
   <div id="pokedex">
     <div id="left">
       <div id="top-left"></div>
@@ -347,7 +341,7 @@ body {
   width: 300px;
   height: 220px;
   border-radius: 20px;
-  //box-shadow: 0px 0px 6px 2px darken($red, 20%);
+  box-shadow: 0px 0px 6px 2px darken($red, 20%);
 }
 
 #screen {
