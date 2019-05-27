@@ -21,11 +21,11 @@
       </div>
       <div id="screen"><img class="selectDisable" :src="pokemon.image" alt=""></div>
       <div id="triangle"></div>
-      <div id="blue-button-left" @click="doButton()" ></div>
-      <div id="green-button-left"></div>
+      <div id="blue-button-left" @click="pokemonRandom()" ></div>
+      <div id="green-button-left" @click="specificPokemon(specificID)" ></div>
       <div id="orange-button-left"></div>
       <div id="square-button-left">
-        <input id="nb" type="text" name="howmuch" :value="pokemon.id" oninput="updateIdPokemon(this.value)">
+        <input id="nb" type="text" name="howmuch" v-model="randomID" maxlength="3" oninput="updateIdPokemon(this.value)">
       </div>
       <div id="cross">
         <div id="mid-cross">
@@ -89,8 +89,20 @@
 export default {
   props:[
     'pokemon',
-    'doButton'
-  ]
+    'pokemonRandom',
+    'specificPokemon',
+  ],
+  data(){
+    return{
+      specificID: '',
+      randomID: this.pokemon.id
+    }
+  },
+  computed:{
+    capitalizedName(){
+      return pokemon.name.charAt(0).toUpperCase() + name.slice(1)
+    }
+  }
 }
 </script>
 

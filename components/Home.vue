@@ -8,7 +8,11 @@
     </div>
 
     <div class="pokealeatorio">
-      <PokeCard v-if="isPokemonRandomShown" :pokemon="pokemonRandomInfo" :doButton="pokemonRandom" />
+      <PokeCard v-if="isPokemonRandomShown"
+        :pokemon="pokemonRandomInfo"
+        :pokemonRandom="pokemonRandom"
+        :specificPokemon="sendSpecificID"
+      />
     </div>
 
     <div class="pokeID">
@@ -44,8 +48,8 @@ export default {
         })
         .catch(err => this.$noty.error(err))
     },
-    sendSpecificID(){
-      this.specificId == ''
+    sendSpecificID(specificId){
+      specificId == ''
         ? this.$noty.error('Favor de ingresar un ID')
         : this.specificId <= 802
           ? this.specificPokemon()
