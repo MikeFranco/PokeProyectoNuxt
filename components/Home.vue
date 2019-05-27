@@ -8,9 +8,7 @@
     </div>
 
     <div class="pokealeatorio">
-
-      <div class="botonshowpoke"> <button style="color: black" @click="pokemonRandom()">Show Pokemon Random</button>  </div>
-      <PokeCard v-if="isPokemonRandomShown" :pokemon="pokemonRandomInfo" />
+      <PokeCard v-if="isPokemonRandomShown" :pokemon="pokemonRandomInfo" :doButton="pokemonRandom" />
     </div>
 
     <div class="pokeID">
@@ -25,6 +23,9 @@ import axios from 'axios';
 import PokeCard from '~/components/PokeCard.vue';
 
 export default {
+  components:{
+    PokeCard
+  },
   data(){
     return {
       specificId: '',
@@ -59,10 +60,9 @@ export default {
         })
         .catch(err => this.$noty.error(err));
     }
-
   },
-  components:{
-    PokeCard
+  created(){
+    this.pokemonRandom()
   }
 }
 </script>

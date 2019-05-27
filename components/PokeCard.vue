@@ -21,7 +21,7 @@
       </div>
       <div id="screen"><img class="selectDisable" :src="pokemon.image" alt=""></div>
       <div id="triangle"></div>
-      <div id="blue-button-left"></div>
+      <div id="blue-button-left" @click="doButton()" ></div>
       <div id="green-button-left"></div>
       <div id="orange-button-left"></div>
       <div id="square-button-left">
@@ -88,7 +88,8 @@
 <script>
 export default {
   props:[
-    'pokemon'
+    'pokemon',
+    'doButton'
   ]
 }
 </script>
