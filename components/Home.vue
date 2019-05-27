@@ -9,14 +9,7 @@
     <div class="pokealeatorio">
 
       <div class="botonshowpoke"> <button style="color: black" @click="pokemonRandom()">Show Pokemon Random</button>  </div>
-
-      <p v-if="isPokemonRandomShown">
-        <br>Pokemon con ID aleatorio <br>
-        <img :src="pokemon.image"/>
-        <br>Un {{pokemon.name}} ha aparecido<br>
-        El id del pokemon es: {{pokemon.id}}<br>
-        ¡Cuidado!, {{pokemon.name}} ha usado: {{pokemon.move}}<br>
-      </p>
+      <PokeCard v-if="isPokemonRandomShown" :pokemon="pokemonRandomInfo" />
     </div>
 
     <div class="pokeID">
@@ -36,7 +29,7 @@ export default {
       specificId: '',
       isPokemonRandomShown: false,
       isPokemonSpec: false,
-      pokemon: {},
+      pokemonRandomInfo: {},
       pokemonSpecificInfo: {}
     }
   },
@@ -44,7 +37,7 @@ export default {
     pokemonRandom(){
       this.$axios.post('http://localhost:6001/verPokemones')
         .then(response =>{
-          this.pokemon = response.data;
+          this.pokemonRandomInfo = response.data;
           this.isPokemonRandomShown = true;
         })
         .catch(err => this.$noty.error(err))
