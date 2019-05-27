@@ -25,14 +25,14 @@
     </div>
 
     <div class="pokeID">
-
-      <p v-if="isPokemonSpec">
+      <PokeCard v-if="isPokemonSpec" :pokemon="pokemon2" />
+      <!-- <p v-if="isPokemonSpec">
         <br>Pokemon con ID Específico <br>
       <img :src="pokemon2.image"/>
         <br>Un {{pokemon2.name}} ha aparecido<br>
         El id del {{pokemon2.name}} es: {{pokemon2.id}}<br>
         ¡Cuidado!, {{pokemon2.name}} ha usado: {{pokemon2.move}}<br>
-      </p>
+      </p> -->
     </div>
 
     <div class="pokeLists">
