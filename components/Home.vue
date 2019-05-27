@@ -3,19 +3,14 @@
 
     <div class="barraBusqueda">
       <h3>Ingrese el ID del pokemon:</h3>
-      <input style="color: black" type="text" v-model="mandoID" maxlength="3" @keyup.enter="sendID()">
-    </div>
-
-    <div class="cantidad">
-      <h3>¿Cuántos Pokemons quieres ver?</h3>
-      <input type="number" v-model="limit" maxlength="3" @keyup.enter="pokeInterval()">{{limit}}
+      <input style="color: black" type="text" v-model="specificId" maxlength="3" @keyup.enter="sendSpecificID()">
     </div>
 
     <div class="pokealeatorio">
 
       <div class="botonshowpoke"> <button style="color: black" @click="pokemonRandom()">Show Pokemon Random</button>  </div>
 
-      <p v-if="isPokemonShown">
+      <p v-if="isPokemonRandomShown">
         <br>Pokemon con ID aleatorio <br>
         <img :src="pokemon.image"/>
         <br>Un {{pokemon.name}} ha aparecido<br>
@@ -25,18 +20,7 @@
     </div>
 
     <div class="pokeID">
-      <PokeCard v-if="isPokemonSpec" :pokemon="pokemon2" />
-      <!-- <p v-if="isPokemonSpec">
-        <br>Pokemon con ID Específico <br>
-      <img :src="pokemon2.image"/>
-        <br>Un {{pokemon2.name}} ha aparecido<br>
-        El id del {{pokemon2.name}} es: {{pokemon2.id}}<br>
-        ¡Cuidado!, {{pokemon2.name}} ha usado: {{pokemon2.move}}<br>
-      </p> -->
-    </div>
-
-    <div class="pokeLists">
-      <PokeCard v-for="pokemon in pokemonList" :key="pokemon.id" :pokemon="pokemon"/>
+      <PokeCard v-if="isPokemonSpec" :pokemon="pokemonRandomInfo" />
     </div>
 
   </div>
@@ -47,48 +31,40 @@ import axios from 'axios';
 import PokeCard from '~/components/PokeCard.vue';
 
 export default {
-  name: 'HelloWorld',
   data(){
     return {
-      mandoID: '',
-      limit: '',
-      isPokemonShown: false,
+      specificId: '',
+      isPokemonRandomShown: false,
       isPokemonSpec: false,
       pokemon: {},
-      pokemon2: {},
-      pokemonList: []
+      pokemonRandomInfo: {}
     }
   },
   methods: {
     pokemonRandom(){
       this.$axios.post('http://localhost:6001/verPokemones')
         .then(response =>{
-          this.isPokemonShown = true;
-          console.log(response)
           this.pokemon = response.data;
+          this.isPokemonRandomShown = true;
         })
         .catch(err => this.$noty.error(err))
     },
-    getPokemonDataFromResponse(response){
-      return response.data;
-    },
-    async sendID(){
-      this.isPokemonSpec = true;
-      (this.mandoID == '')
+    sendSpecificID(){
+      this.specificId == ''
         ? this.$noty.error('Favor de ingresar un ID')
-        : (this.mandoID <= 802)
-          ? this.pokemon2 = this.getPokemonDataFromResponse( await axios.get('http://localhost:6001/pokemonEspec', { params:{ id : this.mandoID } }))
-          : alert(`El pokemon con id ${this.mandoID} no está registrado en la Pokedex`);
+        : this.specificId <= 802
+          ? this.specificPokemon()
+          : this.$noty.error(`El pokemon con id ${this.specificId} no está registrado en la Pokedex`);
     },
 
-    async pokeInterval(){
-      (this.limit == '')
-        ? this.$noty.error('Favor de ingresar cuantos pokemones quieres ver')
-        : this.back()
-    },
-    async back(){
-      this.pokemonList = this.getPokemonDataFromResponse( await axios.get('http://localhost:6001/pokemonIntervalo', { params:{id: this.mandoID, limit: this.limit}}))
-    },
+    specificPokemon(){
+      this.$axios.get('http://localhost:6001/pokemonEspec', { params:{ id : this.specificId } })
+        .then(response =>{
+          this.pokemonRandomInfo = response.data;
+          this.isPokemonSpec = true;
+        })
+        .catch(err => this.$noty.error(err));
+    }
 
   },
   components:{
@@ -114,12 +90,7 @@ p{
   top: 0px;
   left: 350px;
 }
-.cantidad{
-  text-align: start;
-  position: absolute;
-  top: 0px;
-  left: 60%;
-}
+
 .botonshowpoke{
   padding-top: 50px;
 }
