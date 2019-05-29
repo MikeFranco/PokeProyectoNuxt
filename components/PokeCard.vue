@@ -96,7 +96,7 @@ export default {
     return{
       specificID: '',
       randomID: this.pokemon.id,
-      //actualSprite: ''
+      actualSpriteIndex: 0
     }
   },
   computed:{
@@ -104,27 +104,17 @@ export default {
       return this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)
     },
     actualSprite(){
-      return (this.pokemon.sprites).map(sprite => sprite)
+      return this.pokemon.sprites[this.actualSpriteIndex];
     }
   },
   methods:{
     changeSprites(){
-      (this.pokemon.sprites).map(sprite => {
-
-        this.actualSprite = sprite;
-				//if (nextImage) {
-				//	poke.sprites = nextImage;
-				//}
-				//this.spriteIndex++
-				console.log(sprite)
-				//if (this.spriteIndex >= poke.sprites.length) {
-				//	this.spriteIndex = 0
-				//}
-			})
+      const newValue = this.actualSpriteIndex + 1;
+      this.actualSpriteIndex = newValue >= this.pokemon.sprites.length ? 0 : newValue;
     }
   },
-  created(){
-    setInterval(this.changeSprites, 500)
+  mounted(){
+    setInterval(this.changeSprites, 750);
   }
 }
 </script>
