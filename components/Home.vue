@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     pokemonRandom(){
-      this.$axios.post('http://localhost:6001/get-random-pokemon')
+      this.$axios.get('http://localhost:6001/get-random-pokemon')
         .then(response =>{
           this.pokemonRandomInfo = response.data;
           this.isPokemonRandomShown = true;

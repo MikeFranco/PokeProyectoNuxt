@@ -19,7 +19,7 @@
         <div id="button-bottom" onclick="changePicturePokemon()"></div>
         <p class="selectDisable">≡≡</p>
       </div>
-      <div id="screen"><img class="selectDisable" :src="pokemon.image" alt=""></div>
+      <div id="screen"><img class="selectDisable" :src="this.actualSprite" alt=""></div>
       <div id="triangle"></div>
       <div id="blue-button-left" @click="pokemonRandom()" ></div>
       <div id="green-button-left" @click="specificPokemon(specificID)" ></div>
@@ -95,13 +95,36 @@ export default {
   data(){
     return{
       specificID: '',
-      randomID: this.pokemon.id
+      randomID: this.pokemon.id,
+      //actualSprite: ''
     }
   },
   computed:{
     capitalizedName(){
       return pokemon.name.charAt(0).toUpperCase() + name.slice(1)
+    },
+    actualSprite(){
+      return (this.pokemon.sprites).map(sprite => sprite)
     }
+  },
+  methods:{
+    changeSprites(){
+      (this.pokemon.sprites).map(sprite => {
+
+        this.actualSprite = sprite;
+				//if (nextImage) {
+				//	poke.sprites = nextImage;
+				//}
+				//this.spriteIndex++
+				console.log(sprite)
+				//if (this.spriteIndex >= poke.sprites.length) {
+				//	this.spriteIndex = 0
+				//}
+			})
+    }
+  },
+  created(){
+    setInterval(this.changeSprites, 500)
   }
 }
 </script>
