@@ -51,7 +51,7 @@
         <div id="hinge3"></div>
       </div>
     <div id="right">
-      <div id="info-screen">{{ pokemon.name }}</div>
+      <div id="info-screen">{{ capitalizedName }}</div>
       <div id="keyboard">
         <div class="key"></div>
         <div class="key"></div>
@@ -101,7 +101,7 @@ export default {
   },
   computed:{
     capitalizedName(){
-      return pokemon.name.charAt(0).toUpperCase() + name.slice(1)
+      return this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)
     },
     actualSprite(){
       return (this.pokemon.sprites).map(sprite => sprite)
