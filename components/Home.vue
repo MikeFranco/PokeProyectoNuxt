@@ -41,12 +41,12 @@ export default {
   },
   methods: {
     pokemonRandom(){
-      this.$axios.post('http://localhost:6001/verPokemones')
+      this.$axios.post('http://localhost:6001/get-random-pokemon')
         .then(response =>{
           this.pokemonRandomInfo = response.data;
           this.isPokemonRandomShown = true;
         })
-        .catch(err => this.$noty.error(err))
+        .catch(err => this.$noty.error(err));
     },
     sendSpecificID(specificId){
       specificId == ''
@@ -57,7 +57,7 @@ export default {
     },
 
     specificPokemon(){
-      this.$axios.get('http://localhost:6001/pokemonEspec', { params:{ id : this.specificId } })
+      this.$axios.get('http://localhost:6001/get-specific-pokemon', { params:{ id : this.specificId } })
         .then(response =>{
           this.pokemonSpecificInfo = response.data;
           this.isPokemonSpec = true;
