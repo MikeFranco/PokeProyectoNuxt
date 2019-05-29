@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     pokemonRandom(){
-      this.$axios.post('http://localhost:6001/get-random-pokemon')
+      this.$axios.post('/back/get-random-pokemon')
         .then(response =>{
           this.pokemonRandomInfo = response.data;
           this.isPokemonRandomShown = true;
@@ -57,7 +57,7 @@ export default {
     },
 
     specificPokemon(){
-      this.$axios.get('http://localhost:6001/get-specific-pokemon', { params:{ id : this.specificId } })
+      this.$axios.get('/back/get-specific-pokemon', { params:{ id : this.specificId } })
         .then(response =>{
           this.pokemonSpecificInfo = response.data;
           this.isPokemonSpec = true;

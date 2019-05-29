@@ -23,6 +23,16 @@ export default {
       }
     ]
   },
+  proxy: {
+    "/back": {
+      target: "https://poke-proyecto.herokuapp.com/",
+      pathRewrite: {
+        '^/back': ''
+      },
+      changeOrigin: false,
+      prependPath: false
+    }
+  },
 
   /*
   ** Customize the progress-bar color
