@@ -19,7 +19,7 @@
         <div id="button-bottom" onclick="changePicturePokemon()"></div>
         <p class="selectDisable">≡≡</p>
       </div>
-      <div id="screen"><img class="selectDisable" :src="pokemon.image" alt=""></div>
+      <div id="screen"><img class="selectDisable" :src="this.actualSprite" alt=""></div>
       <div id="triangle"></div>
       <div id="blue-button-left" @click="pokemonRandom()" ></div>
       <div id="green-button-left" @click="specificPokemon(specificID)" ></div>
@@ -51,7 +51,7 @@
         <div id="hinge3"></div>
       </div>
     <div id="right">
-      <div id="info-screen">{{ pokemon.name }}</div>
+      <div id="info-screen">{{ actualSpriteIndex>=2 ? `Shiny ${capitalizedName}` : capitalizedName }}</div>
       <div id="keyboard">
         <div class="key"></div>
         <div class="key"></div>
@@ -95,13 +95,26 @@ export default {
   data(){
     return{
       specificID: '',
-      randomID: this.pokemon.id
+      randomID: this.pokemon.id,
+      actualSpriteIndex: 0
     }
   },
   computed:{
     capitalizedName(){
-      return pokemon.name.charAt(0).toUpperCase() + name.slice(1)
+      return this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)
+    },
+    actualSprite(){
+      return this.pokemon.sprites[this.actualSpriteIndex];
     }
+  },
+  methods:{
+    changeSprites(){
+      const newValue = this.actualSpriteIndex + 1;
+      this.actualSpriteIndex = newValue >= this.pokemon.sprites.length ? 0 : newValue;
+    }
+  },
+  mounted(){
+    setInterval(this.changeSprites, 750);
   }
 }
 </script>

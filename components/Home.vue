@@ -41,12 +41,12 @@ export default {
   },
   methods: {
     pokemonRandom(){
-      this.$axios.post('/back/get-random-pokemon')
+      this.$axios.get('https://poke-proyecto.herokuapp.com/get-random-pokemon')
         .then(response =>{
           this.pokemonRandomInfo = response.data;
           this.isPokemonRandomShown = true;
         })
-        .catch(err => this.$noty.error(err));
+        .catch(err => console.error(err));
     },
     sendSpecificID(specificId){
       specificId == ''
@@ -57,7 +57,7 @@ export default {
     },
 
     specificPokemon(){
-      this.$axios.get('/back/get-specific-pokemon', { params:{ id : this.specificId } })
+      this.$axios.get('https://poke-proyecto.herokuapp.com/get-specific-pokemon', { params:{ id : this.specificId } })
         .then(response =>{
           this.pokemonSpecificInfo = response.data;
           this.isPokemonSpec = true;
@@ -66,7 +66,7 @@ export default {
     }
   },
   created(){
-    this.pokemonRandom()
+    this.pokemonRandom();
   }
 }
 </script>
