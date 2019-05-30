@@ -66,7 +66,7 @@ export default {
     }
   },
   created(){
-    this.pokemonRandom()
+    this.pokemonRandom();
   }
 }
 </script>
