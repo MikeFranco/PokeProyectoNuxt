@@ -51,7 +51,7 @@
         <div id="hinge3"></div>
       </div>
     <div id="right">
-      <div id="info-screen">{{ capitalizedName }}</div>
+      <div id="info-screen">{{ actualSpriteIndex>=2 ? `Shiny ${capitalizedName}` : capitalizedName }}</div>
       <div id="keyboard">
         <div class="key"></div>
         <div class="key"></div>
