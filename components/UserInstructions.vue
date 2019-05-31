@@ -8,15 +8,17 @@
           </template>
 
           <v-card>
-            <v-card-title class="headline grey lighten-2" primary-title>Privacy Policy</v-card-title>
+            <v-card-title class="headline grey lighten-2" primary-title>Bienvenido, Maestro Pokemon</v-card-title>
 
-            <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</v-card-text>
+            <v-card-text>¿Listo para buscar a todos los pokemon's? Estos son los botones con los que puedes usar para buscarlos<br/><br/>
+              Para comenzar a buscar Pokemons, presiona el boton azul -> <div class="blue-button-left" ></div>
+            </v-card-text>
 
             <v-divider></v-divider>
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" flat @click="dialog = false">I accept</v-btn>
+              <v-btn color="primary" flat @click="dialog = false">¡Vamos a buscar Pokemon's!</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -35,5 +37,34 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss" >
+$blue: #2D77F9;
+$dark-blue: #0530E5;
+$black: #222222;
+
+@mixin linear-gradient($color1, $color2) {
+  background: linear-gradient($color1, $color2);
+}
+
+.blue-button-left {
+  @include linear-gradient($blue, $dark-blue);
+  position: absolute;
+  z-index: 130;
+  top: 125px;
+  right: 30px;
+  border-radius: 100px;
+  height: 55px;
+  width: 55px;
+  box-shadow: 0px 1px 0px 1px darken($dark-blue, 20%);
+  cursor: pointer;
+}
+
+.blue-button-left:active {
+  box-shadow: none;
+  @include linear-gradient(darken($blue, 40%), $blue);
+  box-shadow: 0px 0px 10px 3px darken($dark-blue, 10%) inset;
+  border: $black solid 1px;
+}
+
+
 </style>

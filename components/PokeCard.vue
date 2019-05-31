@@ -31,13 +31,13 @@
         <div id="mid-cross">
           <div id="mid-circle"></div>
         </div>
-        <div id="top-cross" onclick="increaseIdPokemon()">
+        <div id="top-cross">
           <div id="upC"></div>
         </div>
         <div id="right-cross">
           <div id="rightC"></div>
         </div>
-        <div id="bot-cross" onclick="decreaseIdPokemon()">
+        <div id="bot-cross">
           <div id="downC"></div>
         </div>
         <div id="left-cross">
