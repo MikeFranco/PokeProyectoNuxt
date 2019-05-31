@@ -16,13 +16,13 @@
       <div id="border-screen">
         <div id="button-top1"></div>
         <div id="button-top2"></div>
-        <div id="button-bottom" onclick="changePicturePokemon()"></div>
+        <div id="button-bottom" ></div>
         <p class="selectDisable">≡≡</p>
       </div>
       <div id="screen"><img class="selectDisable" :src="this.actualSprite" alt=""></div>
       <div id="triangle"></div>
-      <div id="blue-button-left" @click="pokemonRandom()" ></div>
-      <div id="green-button-left" @click="getSpecificPokemon(specificID)" ></div>
+      <div id="blue-button-left" ></div>
+      <div id="green-button-left" ></div>
       <div id="orange-button-left"></div>
       <div id="square-button-left">
         <input id="nb"

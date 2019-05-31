@@ -69,7 +69,7 @@ export default {
       specificId == ""
         ? this.$noty.error("Favor de ingresar un ID")
         : this.specificId <= 802
-        ? this.getSpecificPokemon(specificId)
+        ? this.getSpecificPokemon(specificId) || (this.$router.push({path: this.$route.path, query: { id: specificId }}))
         : this.$noty.error(
             `El pokemon con id ${
               this.specificId
