@@ -22,12 +22,16 @@
         v-if="isPokemonRandomShown"
         :pokemon="pokemonRandomInfo"
         :pokemonRandom="pokemonRandom"
-        :specificPokemon="sendSpecificID"
+        :getSpecificPokemon="sendSpecificID"
       />
     </div> -->
 
     <div class="pokealeatorio">
-      <PokeCard v-if="isPokemonSpec" :pokemon="pokemonSpecificInfo"/>
+      <PokeCard
+        :pokemon="pokemonSpecificInfo"
+        :pokemonRandom="pokemonRandom"
+        :getSpecificPokemon="getSpecificPokemon"
+      />
     </div>
 
   </div>
@@ -49,7 +53,7 @@ export default {
       isPokemonRandomShown: false,
       isPokemonSpec: false,
       pokemonRandomInfo: {},
-      pokemonSpecificInfo: {}
+      pokemonSpecificInfo: undefined
     };
   },
   methods: {
@@ -65,7 +69,7 @@ export default {
       specificId == ""
         ? this.$noty.error("Favor de ingresar un ID")
         : this.specificId <= 802
-        ? this.specificPokemon()
+        ? this.getSpecificPokemon()
         : this.$noty.error(
             `El pokemon con id ${
               this.specificId
@@ -73,9 +77,9 @@ export default {
           );
     },
 
-    specificPokemon() {
+    getSpecificPokemon(pokemonId) {
       this.$axios.get("https://poke-proyecto.herokuapp.com/get-specific-pokemon", {
-          params: { id: this.specificId }
+          params: { id: pokemonId }
         })
         .then(response => {
           this.pokemonSpecificInfo = response.data;
@@ -83,12 +87,6 @@ export default {
         })
         .catch(err => this.$noty.error(err));
     }
-  },
-  created(){
-    const { id } = this.$route.query;
-    this.specificId = id;
-    this.specificPokemon();
-    
   }
 };
 </script>
