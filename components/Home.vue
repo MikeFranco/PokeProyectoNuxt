@@ -6,7 +6,7 @@
       <UserInstructions />
     </div>
 
-    <div class="barraBusqueda">
+    <!-- <div class="barraBusqueda">
       <h3>Ingrese el ID del pokemon:</h3>
       <input
         style="color: black"
@@ -15,18 +15,18 @@
         maxlength="3"
         @keyup.enter="sendSpecificID()"
       >
-    </div>
+    </div> -->
 
-    <div class="pokealeatorio">
+    <!-- <div class="pokealeatorio">
       <PokeCard
         v-if="isPokemonRandomShown"
         :pokemon="pokemonRandomInfo"
         :pokemonRandom="pokemonRandom"
         :specificPokemon="sendSpecificID"
       />
-    </div>
+    </div> -->
 
-    <div class="pokeID">
+    <div class="pokealeatorio">
       <PokeCard v-if="isPokemonSpec" :pokemon="pokemonSpecificInfo"/>
     </div>
 
@@ -84,8 +84,11 @@ export default {
         .catch(err => this.$noty.error(err));
     }
   },
-  created() {
-    this.pokemonRandom();
+  created(){
+    const { id } = this.$route.query;
+    this.specificId = id;
+    this.specificPokemon();
+    
   }
 };
 </script>
