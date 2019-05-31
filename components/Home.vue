@@ -30,7 +30,7 @@
       <PokeCard
         :pokemon="pokemonSpecificInfo"
         :pokemonRandom="pokemonRandom"
-        :getSpecificPokemon="getSpecificPokemon"
+        :getSpecificPokemon="sendSpecificID"
       />
     </div>
 
@@ -69,7 +69,7 @@ export default {
       specificId == ""
         ? this.$noty.error("Favor de ingresar un ID")
         : this.specificId <= 802
-        ? this.getSpecificPokemon()
+        ? this.getSpecificPokemon(specificId)
         : this.$noty.error(
             `El pokemon con id ${
               this.specificId

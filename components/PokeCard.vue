@@ -30,7 +30,7 @@
           name="howmuch"
           v-model="specificID"
           maxlength="3"
-          @keyup.enter="sendSpecificID">
+          @keyup.enter="getSpecificPokemon(specificID)">
       </div>
       <div id="cross">
         <div id="mid-cross">
