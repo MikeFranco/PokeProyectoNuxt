@@ -1,5 +1,5 @@
 <template>
-  <div id="pokedex">
+  <div v-if="pokemon" id="pokedex">
     <div id="left">
       <div id="top-left"></div>
       <div id="top-left1">
@@ -16,28 +16,33 @@
       <div id="border-screen">
         <div id="button-top1"></div>
         <div id="button-top2"></div>
-        <div id="button-bottom" onclick="changePicturePokemon()"></div>
+        <div id="button-bottom" ></div>
         <p class="selectDisable">≡≡</p>
       </div>
       <div id="screen"><img class="selectDisable" :src="this.actualSprite" alt=""></div>
       <div id="triangle"></div>
-      <div id="blue-button-left" @click="pokemonRandom()" ></div>
-      <div id="green-button-left" @click="specificPokemon(specificID)" ></div>
+      <div id="blue-button-left" ></div>
+      <div id="green-button-left" ></div>
       <div id="orange-button-left"></div>
       <div id="square-button-left">
-        <input id="nb" type="text" name="howmuch" v-model="pokemon.id" maxlength="3" oninput="updateIdPokemon(this.value)">
+        <input id="nb"
+          type="text"
+          name="howmuch"
+          v-model="specificID"
+          maxlength="3"
+          @keyup.enter="getSpecificPokemon(specificID)">
       </div>
       <div id="cross">
         <div id="mid-cross">
           <div id="mid-circle"></div>
         </div>
-        <div id="top-cross" onclick="increaseIdPokemon()">
+        <div id="top-cross">
           <div id="upC"></div>
         </div>
         <div id="right-cross">
           <div id="rightC"></div>
         </div>
-        <div id="bot-cross" onclick="decreaseIdPokemon()">
+        <div id="bot-cross">
           <div id="downC"></div>
         </div>
         <div id="left-cross">
@@ -90,12 +95,11 @@ export default {
   props:[
     'pokemon',
     'pokemonRandom',
-    'specificPokemon',
+    'getSpecificPokemon',
   ],
   data(){
     return{
       specificID: '',
-      randomID: this.pokemon.id,
       actualSpriteIndex: 0
     }
   },
@@ -115,6 +119,11 @@ export default {
   },
   mounted(){
     setInterval(this.changeSprites, 750);
+  },
+  created(){
+    const { id } = this.$route.query;
+    this.specificID = id;
+    this.getSpecificPokemon(id);
   }
 }
 </script>
