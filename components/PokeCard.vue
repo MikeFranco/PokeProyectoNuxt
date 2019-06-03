@@ -405,18 +405,6 @@ body {
   @include user-select(none);
 }
 
-/*#border-screen::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: -10px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 40px 0 0 40px;
-  border-color: transparent transparent transparent $red;
-}*/
-
 #triangle {
   position: absolute;
   z-index: 120;

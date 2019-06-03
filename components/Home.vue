@@ -40,7 +40,6 @@ export default {
     pokemonRandom() {
       //Antes de deployar el frontend, descomentar la línea 45 y comentar la 44 para poder usar el backend deployado en heroku
       //this.$axios.get("http://localhost:6001/get-random-pokemon")
-  
       this.$axios.get("https://poke-proyecto.herokuapp.com/get-random-pokemon")
         .then(response => {
           this.pokemonSpecificInfo = response.data;
@@ -102,8 +101,8 @@ input {
 }
 .pokealeatorio {
   position: absolute;
-  top: 150px;
-  left: 150px;
+  top: 200px;
+  left: 200px;
 }
 .pokeID {
   margin-top: 128px;
@@ -114,8 +113,7 @@ input {
 
 .instructions {
   position: absolute;
-  top: 40%;
-  left: 80%;
-
+  top: 40px;
+  left: 80px;
 }
 </style>

@@ -41,7 +41,10 @@ $ yarn dev
 <h2>Una vez que hayas hecho la instrucción anterior, en una terminal ejecuta:</h2>
 
 ```bash
-$ heroku container:release web
+# Crear la imagen de docker
+$ heroku container:push --app=poke-proyecto-front web
+# Subir la nueva imagen de docker a Heroku
+$ heroku container:release --app=poke-proyecto-front  web
 ```
 
 ### Las carpetas de **components y pages** tienen su propio README
