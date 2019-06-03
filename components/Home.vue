@@ -8,9 +8,9 @@
 
     <div class="pokealeatorio">
       <PokeCard
+        :getSpecificPokemon="sendSpecificID"
         :pokemon="pokemonSpecificInfo"
         :pokemonRandom="pokemonRandom"
-        :getSpecificPokemon="sendSpecificID"
       />
     </div>
 
@@ -32,19 +32,18 @@ export default {
       specificId: "",
       isPokemonRandomShown: false,
       isPokemonSpec: false,
-      pokemonRandomInfo: {},
+      pokemonRandomInfo: undefined,
       pokemonSpecificInfo: undefined
     };
   },
   methods: {
     pokemonRandom() {
+      //Antes de deployar el frontend, descomentar la línea 45 y comentar la 44 para poder usar el backend deployado en heroku
       //this.$axios.get("http://localhost:6001/get-random-pokemon")
-      /*Antes de deployar el frontend, descomentar la siguiente línea de código y comentar la de arriba
-        para poder usar el backend deployado en heroku
-      */
+  
       this.$axios.get("https://poke-proyecto.herokuapp.com/get-random-pokemon")
         .then(response => {
-          this.pokemonRandomInfo = response.data;
+          this.pokemonSpecificInfo = response.data;
           this.isPokemonRandomShown = true;
         })
         .catch(err => console.error(err));
@@ -58,12 +57,12 @@ export default {
     },
 
     getSpecificPokemon(pokemonId) {
+      /*Antes de deployar el frontend, descomentar las líneas de código 66 a 68 y comentar de la
+        63 a la 65 para poder usar el backend deployado en heroku
+      */
       //this.$axios.get("http://localhost:6001/get-specific-pokemon", {
       //    params: { id: pokemonId }
       //  })
-      /*Antes de deployar el frontend, descomentar las siguientes 3 líneas de código y comentar las 3 de arriba
-        para poder usar el backend deployado en heroku
-      */
       this.$axios.get("https://poke-proyecto.herokuapp.com/get-specific-pokemon", {
           params: { id: pokemonId }
         })
@@ -71,7 +70,7 @@ export default {
           this.pokemonSpecificInfo = response.data;
           this.isPokemonSpec = true;
         })
-        .catch(err => this.$noty.error(err));
+        .catch(err => console.error(err));
     }
   }
 };

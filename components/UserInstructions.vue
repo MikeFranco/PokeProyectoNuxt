@@ -10,8 +10,12 @@
           <v-card>
             <v-card-title class="headline grey lighten-2" primary-title>Bienvenido, Maestro Pokemon</v-card-title>
 
-            <v-card-text>¿Listo para buscar a todos los pokemon's? Estos son los botones con los que puedes usar para buscarlos<br/><br/>
-              Para comenzar a buscar Pokemons, presiona el boton azul -> <div class="blue-button-left" ></div>
+            <v-card-text>¿Listo para buscar a todos los pokemones? Estos son los botones con los que puedes usar para buscarlos<br/><br/>
+              Para comenzar a buscar Pokemones: <br/>
+              Puedes escoger buscar uno entre los 802 pokemones disponibles ingresando su id en el recuadro verde y presionando <b> Enter </b> 
+              <br/><br/><br/><br/><div class="square-button-left"> <input id="nb" type="text" maxlength="3" ><br/><br/></div>
+              También, puedes buscarlo agregando su id en el mismo recuadro y persionando el botón verde:
+              <div class="green-button-left" ></div>
             </v-card-text>
 
             <v-divider></v-divider>
@@ -38,33 +42,48 @@ export default {
 </script>
 
 <style scoped lang="scss" >
-$blue: #2D77F9;
-$dark-blue: #0530E5;
-$black: #222222;
+
+$red: #C00D0D;
+$green: #30DA0C;
+$light-green: #ACFB76;
+$dark-green: #137604;
+$leaf-green: #004846;
+$light-leaf-green: #008477;
 
 @mixin linear-gradient($color1, $color2) {
   background: linear-gradient($color1, $color2);
 }
 
-.blue-button-left {
-  @include linear-gradient($blue, $dark-blue);
+.square-button-left {
+  position: absolute;
+  left: 175px;
+  bottom: 115px;
+  z-index: 130;
+  border-radius: 10px;
+  height: 55px;
+  width: 115px;
+  box-shadow: 0 0 20px $leaf-green inset, 0px 0px 5px 1px darken($red, 20%) ;
+  background-color: $light-leaf-green;
+  @include linear-gradient($light-leaf-green, $leaf-green);
+}
+
+.green-button-left {
+  @include linear-gradient($green, $dark-green);
   position: absolute;
   z-index: 130;
-  top: 125px;
-  right: 30px;
   border-radius: 100px;
-  height: 55px;
-  width: 55px;
-  box-shadow: 0px 1px 0px 1px darken($dark-blue, 20%);
+  left: 200px;
+  height: 12px;
+  width: 50px;
+  box-shadow: -1px 1px 0px 1px darken($dark-green, 15%);
   cursor: pointer;
 }
 
-.blue-button-left:active {
+.green-button-left:active {
   box-shadow: none;
-  @include linear-gradient(darken($blue, 40%), $blue);
-  box-shadow: 0px 0px 10px 3px darken($dark-blue, 10%) inset;
-  border: $black solid 1px;
+  @include linear-gradient(darken($green, 40%), $green);
+  box-shadow: 0px 0px 10px 3px darken($green, 20%) inset;
+  border: darken($green, 30%) solid 1px;
 }
-
 
 </style>
