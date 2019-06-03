@@ -10,8 +10,8 @@
           <v-card>
             <v-card-title class="headline grey lighten-2" primary-title>Bienvenido, Maestro Pokemon</v-card-title>
 
-            <v-card-text>¿Listo para buscar a todos los pokemon's? Estos son los botones con los que puedes usar para buscarlos<br/><br/>
-              Para comenzar a buscar Pokemons, presiona el boton azul -> <div class="blue-button-left" ></div>
+            <v-card-text>¿Listo para buscar a todos los pokemones? Estos son los botones con los que puedes usar para buscarlos<br/><br/>
+              Para comenzar a buscar Pokemones de manera aleatoria, <br/> presiona el boton azul dentro del pokedex-> <div class="blue-button-left" ></div>
             </v-card-text>
 
             <v-divider></v-divider>

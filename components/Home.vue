@@ -8,9 +8,9 @@
 
     <div class="pokealeatorio">
       <PokeCard
+        :getSpecificPokemon="sendSpecificID"
         :pokemon="pokemonSpecificInfo"
         :pokemonRandom="pokemonRandom"
-        :getSpecificPokemon="sendSpecificID"
       />
     </div>
 
@@ -32,7 +32,7 @@ export default {
       specificId: "",
       isPokemonRandomShown: false,
       isPokemonSpec: false,
-      pokemonRandomInfo: {},
+      pokemonRandomInfo: undefined,
       pokemonSpecificInfo: undefined
     };
   },
@@ -44,8 +44,9 @@ export default {
       */
       this.$axios.get("https://poke-proyecto.herokuapp.com/get-random-pokemon")
         .then(response => {
-          this.pokemonRandomInfo = response.data;
+          this.pokemonSpecificInfo = response.data;
           this.isPokemonRandomShown = true;
+          this.$router.push({path: this.$route.path, query: { id: response.data.id }})
         })
         .catch(err => console.error(err));
     },

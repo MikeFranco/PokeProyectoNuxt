@@ -21,8 +21,8 @@
       </div>
       <div id="screen"><img class="selectDisable" :src="this.actualSprite" alt=""></div>
       <div id="triangle"></div>
-      <div id="blue-button-left" ></div>
-      <div id="green-button-left" ></div>
+      <div id="blue-button-left" @click="pokemonRandom" ></div>
+      <div id="green-button-left" @click="getSpecificPokemon(specificID)" ></div>
       <div id="orange-button-left"></div>
       <div id="square-button-left">
         <input id="nb"
