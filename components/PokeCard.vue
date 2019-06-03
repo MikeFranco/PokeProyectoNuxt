@@ -905,13 +905,13 @@ body {
   @include linear-gradient($yellow, $dark-sun);
 }
 
-@media (max-width: 756px) {
+/*@media (max-width: 756px) {
   #right, #top-right1, #top-right2, #border-screen, #screen, #cross, #blue-button-left, #green-button-left, #orange-button-left, #square-button-left{
     display: none;
   }
   #top-left1 {
     box-shadow: none;
   }
-}
+}*/
 
 </style>
