@@ -121,7 +121,6 @@ export default {
     setInterval(this.changeSprites, 750);
   },
   created(){
-    //const { id } = this.$route.query;
     this.specificID = 1;
     this.$router.push({path: this.$route.path, query: { id: this.specificID }})
     this.getSpecificPokemon(this.specificID);
