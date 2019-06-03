@@ -21,8 +21,8 @@
       </div>
       <div id="screen"><img class="selectDisable" :src="this.actualSprite" alt=""></div>
       <div id="triangle"></div>
-      <div id="blue-button-left" ></div>
-      <div id="green-button-left" ></div>
+      <div id="blue-button-left"></div>
+      <div id="green-button-left" @click="getSpecificPokemon(specificID)" ></div>
       <div id="orange-button-left"></div>
       <div id="square-button-left">
         <input id="nb"
@@ -121,15 +121,15 @@ export default {
     setInterval(this.changeSprites, 750);
   },
   created(){
-    //const { id } = this.$route.query;
-    this.specificID = 1;
+    const { id } = this.$route.query;
+    this.specificID = id;
     this.$router.push({path: this.$route.path, query: { id: this.specificID }})
     this.getSpecificPokemon(this.specificID);
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 $red: #C00D0D;
 $light-red: #FB7575;

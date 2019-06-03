@@ -43,3 +43,5 @@ $ yarn dev
 ```bash
 $ heroku container:release web
 ```
+
+### Las carpetas de **components y pages** tienen su propio README
