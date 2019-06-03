@@ -38,15 +38,13 @@ export default {
   },
   methods: {
     pokemonRandom() {
-      //this.$axios.get("http://localhost:6001/get-random-pokemon")
-      /*Antes de deployar el frontend, descomentar la siguiente línea de código y comentar la de arriba
-        para poder usar el backend deployado en heroku
-      */
-      this.$axios.get("https://poke-proyecto.herokuapp.com/get-random-pokemon")
+      //Antes de deployar el frontend, descomentar la línea 45 y comentar la 44 para poder usar el backend deployado en heroku
+      this.$axios.get("http://localhost:6001/get-random-pokemon")
+  
+      //this.$axios.get("https://poke-proyecto.herokuapp.com/get-random-pokemon")
         .then(response => {
           this.pokemonSpecificInfo = response.data;
           this.isPokemonRandomShown = true;
-          this.$router.push({path: this.$route.path, query: { id: response.data.id }})
         })
         .catch(err => console.error(err));
     },
@@ -59,20 +57,20 @@ export default {
     },
 
     getSpecificPokemon(pokemonId) {
-      //this.$axios.get("http://localhost:6001/get-specific-pokemon", {
-      //    params: { id: pokemonId }
-      //  })
+      this.$axios.get("http://localhost:6001/get-specific-pokemon", {
+          params: { id: pokemonId }
+        })
       /*Antes de deployar el frontend, descomentar las siguientes 3 líneas de código y comentar las 3 de arriba
         para poder usar el backend deployado en heroku
       */
-      this.$axios.get("https://poke-proyecto.herokuapp.com/get-specific-pokemon", {
-          params: { id: pokemonId }
-        })
+      //this.$axios.get("https://poke-proyecto.herokuapp.com/get-specific-pokemon", {
+      //    params: { id: pokemonId }
+      //  })
         .then(response => {
           this.pokemonSpecificInfo = response.data;
           this.isPokemonSpec = true;
         })
-        .catch(err => this.$noty.error(err));
+        .catch(err => console.error(err));
     }
   }
 };
