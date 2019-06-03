@@ -19,7 +19,6 @@
 
 ## Para poder ejecutar el código, seguir los siguientes comandos en la terminal
 
-
 ``` bash
 # Clonar el repositorio para tener acceso al código:
 $ git clone https://github.com/MikeFranco/PokeProyectoNuxt.git
@@ -33,6 +32,10 @@ $ yarn install
 # Poder correr el código localmente en el localhost:3333
 $ yarn dev
 ```
+
+# URL de la página en la web:
+<h2> <a href="https://poke-proyecto-front.herokuapp.com/?id=151"> poke-proyecto</a> </h1>
+
 ---
 <h1> ¿Cómo deployar con Heroku el frontend? </h1>
 <h2>
