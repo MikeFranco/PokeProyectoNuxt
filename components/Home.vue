@@ -6,26 +6,6 @@
       <UserInstructions />
     </div>
 
-    <!-- <div class="barraBusqueda">
-      <h3>Ingrese el ID del pokemon:</h3>
-      <input
-        style="color: black"
-        type="text"
-        v-model="specificId"
-        maxlength="3"
-        @keyup.enter="sendSpecificID()"
-      >
-    </div> -->
-
-    <!-- <div class="pokealeatorio">
-      <PokeCard
-        v-if="isPokemonRandomShown"
-        :pokemon="pokemonRandomInfo"
-        :pokemonRandom="pokemonRandom"
-        :getSpecificPokemon="sendSpecificID"
-      />
-    </div> -->
-
     <div class="pokealeatorio">
       <PokeCard
         :pokemon="pokemonSpecificInfo"
