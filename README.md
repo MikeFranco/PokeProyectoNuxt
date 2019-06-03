@@ -8,13 +8,12 @@
 
 ---
 
-## Recuerda instalar el Backend de este proyecto para que puedas ver el código sin ningún problema: 
+## Recuerda instalar el Backend de este proyecto para que puedas hacer funcionar el código sin ningún problema: 
 ## [Poke Proyecto Backend](https://github.com/MikeFranco/PokeProyectoBack)
 ---
 
 ## Para poder instalar todas las dependencias requeridas, favor de tener instalado:
 
----
 ## [Git](https://es.atlassian.com/git/tutorials/install-git), [Yarn](https://yarnpkg.com/en/docs/install#debian-stable) y [NodeJs](https://nodejs.org/es/download/package-manager/) 
 ---
 
@@ -33,4 +32,14 @@ $ yarn install
 
 # Poder correr el código localmente en el localhost:3333
 $ yarn dev
+```
+---
+<h1> ¿Cómo deployar con Heroku el frontend? </h1>
+<h2>
+  Antes de hacer el deploy, checar los comentarios del componente <b> Home </b> de las    líneas 42 y 64
+</h2>
+<h2>Una vez que hayas hecho la instrucción anterior, en una terminal ejecuta:</h2>
+
+```bash
+$ heroku container:release web
 ```
