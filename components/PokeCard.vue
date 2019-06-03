@@ -129,7 +129,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 $red: #C00D0D;
 $light-red: #FB7575;
